@@ -1,0 +1,19 @@
+pipeline:
+  name: bbox
+description: |
+  Draw the bounding boxes of raw images.
+input:
+  join:
+    - pfs:
+        repo: images
+        glob: "/(*).jpg"
+        join_on: $1
+    - pfs:
+        repo: labels
+        glob: "/(*)"
+        join_on: $1
+transform:
+  cmd:
+    - "python"
+    - "/bbox.py"
+  image: "pachyderm-demo:1.0"

@@ -1,0 +1,13 @@
+pipeline:
+  name: normalize
+description: |
+  Convert images to grayscale and resize them to 256x256.
+input:
+  pfs:
+    repo: "bbox"
+    glob: "/*"
+transform:
+  cmd:
+    - "python"
+    - "/normalize.py"
+  image: "pachyderm-demo:1.0"

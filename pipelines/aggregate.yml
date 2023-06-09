@@ -1,0 +1,13 @@
+pipeline:
+  name: aggregate
+description: |
+  Find the aggregates of all normalized images.
+input:
+  pfs:
+    repo: normalize
+    glob: "/"
+transform:
+  cmd:
+    - "python"
+    - "/aggregate.py"
+  image: "pachyderm-demo:1.0"

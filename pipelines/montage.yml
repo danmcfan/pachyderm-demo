@@ -1,0 +1,28 @@
+pipeline:
+  name: montage
+description: |
+  Create a montage of raw and normalized images.
+input:
+  join:
+    - pfs:
+        repo: bbox
+        glob: "/(*)"
+        join_on: $1
+    - pfs:
+        repo: normalize
+        glob: "/(*)"
+        join_on: $1
+transform:
+  cmd:
+    - "python"
+    - "/montage.py"
+  image: "pachyderm-demo:1.0"
+resource_requests:
+  cpu: 0.25
+  memory: "512M"
+resource_limits:
+  cpu: 0.25
+  memory: "512M"
+sidecar_resource_limits:
+  cpu: 0.25
+  memory: "512M"
