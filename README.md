@@ -1,5 +1,6 @@
 # Pachyderm Demo
 
+
 ## Links
 
 - [Local Deploy](https://docs.pachyderm.com/latest/getting-started/local-deploy/docker/)
@@ -10,7 +11,7 @@
 
 Command Line Interface
 ```sh
-brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@2.4
+brew tap pachyderm/tap && brew install pachyderm/tap/pachctl
 ```
 
 Helm Repository
@@ -40,3 +41,32 @@ pachctl version
 ```
 
 ## Beginner Tutorial
+
+Create Repo
+```sh
+pachctl create repo dingo-images -d "Images of the Dingo dog breed"
+```
+
+Ingest Data
+```sh
+pachctl put file dingo-images@main -r -f s3://pachyderm/stanford-dog/images/n02115641-dingo
+```
+
+List Data
+```sh
+pachctl list file dingo-images@main
+```
+
+Export Data
+```sh
+pachctl get file dingo-images@main -r -o ./tmp/dingo-images
+```
+
+Create Pipeline
+```sh
+pachctl create pipeline -f ./edges.json
+```
+
+## High Level Architecture
+
+![High Level Architecture](./docs/images/pachyderm-high-level-arch.svg)
