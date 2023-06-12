@@ -1,7 +1,7 @@
 pipeline:
   name: bbox
 description: |
-  Draw the bounding boxes of raw images.
+  crop to bounding box
 input:
   join:
     - pfs:
@@ -17,3 +17,15 @@ transform:
     - "python"
     - "/bbox.py"
   image: "pachyderm-demo:1.0"
+resource_requests:
+  cpu: 0.1
+  memory: "128M"
+resource_limits:
+  cpu: 0.1
+  memory: "128M"
+sidecar_resource_limits:
+  cpu: 0.1
+  memory: "128M"
+autoscaling: true
+parallelism_spec:
+  constant: 4

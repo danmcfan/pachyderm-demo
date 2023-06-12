@@ -1,7 +1,7 @@
 pipeline:
   name: aggregate
 description: |
-  Find the aggregates of all normalized images.
+  calculate aggregate statistics for normalized images
 input:
   pfs:
     repo: normalize
@@ -11,3 +11,15 @@ transform:
     - "python"
     - "/aggregate.py"
   image: "pachyderm-demo:1.0"
+resource_requests:
+  cpu: 0.1
+  memory: "128M"
+resource_limits:
+  cpu: 0.2
+  memory: "256M"
+sidecar_resource_limits:
+  cpu: 0.1
+  memory: "128M"
+autoscaling: true
+parallelism_spec:
+  constant: 1
