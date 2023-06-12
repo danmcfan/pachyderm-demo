@@ -22,7 +22,7 @@ helm repo update
 
 Helm Install
 ```sh
-helm install pachyderm pachyderm/pachyderm \
+helm install pachd pachyderm/pachyderm \
     --set deployTarget=LOCAL \
     --set proxy.enabled=true \
     --set proxy.service.type=LoadBalancer 
@@ -44,27 +44,31 @@ pachctl version
 
 Create Repo
 ```sh
-pachctl create repo dingo-images -d "Images of the Dingo dog breed"
+pachctl create repo images -d "images of dog breeds"
+pachctl create repo labels -d "labels of dog breeds"
 ```
 
 Ingest Data
 ```sh
-pachctl put file dingo-images@main -r -f s3://pachyderm/stanford-dog/images/n02115641-dingo
+pachctl put file images@master:/ -r -f s3://pachyderm/dogs/images/batch_01/
+pachctl put file labels@master:/ -r -f s3://pachyderm/dogs/labels/batch_01/
 ```
 
 List Data
 ```sh
-pachctl list file dingo-images@main
+pachctl list file images@master
+pachctl list file labels@master
 ```
 
 Export Data
 ```sh
-pachctl get file dingo-images@main -r -o ./tmp/dingo-images
+pachctl get file images@master:/ -r -o ./tmp/images/
+pachctl get file labels@master:/ -r -o ./tmp/labels/
 ```
 
 Create Pipeline
 ```sh
-pachctl create pipeline -f ./edges.json
+pachctl create pipeline -f ./bbox.json
 ```
 
 ## High Level Architecture
