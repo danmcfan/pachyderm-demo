@@ -1,0 +1,32 @@
+global:
+  postgresql:
+    postgresqlAuthType: "scram-sha-256" # use "md5" if using postgresql < 14
+    postgresqlUsername: "<USERNAME>"
+    postgresqlPassword: "<PASSWORD>" 
+    # postgresqlExistingSecretName: "<yoursecretname>"
+    postgresqlDatabase: "pachyderm"
+    postgresqlHost: "<HOST>"
+    postgresqlPort: "5432"
+
+postgresql:
+  enabled: false
+
+deployTarget: "AMAZON"
+
+proxy:
+  enabled: true
+  service:
+    type: "LoadBalancer"
+
+pachd:
+  storage:
+    amazon:
+      bucket: "<BUCKET>"
+      id: "<ACCESS_KEY_ID>"
+      secret: "<SECRET_ACCESS_KEY>"
+      region: "<REGION>"
+  externalService:
+    enabled: true
+
+console:
+  enabled: true

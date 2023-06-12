@@ -1,0 +1,6 @@
+deployTarget: "LOCAL"
+
+proxy:
+  enabled: true
+  service:
+    type: "LoadBalancer"
