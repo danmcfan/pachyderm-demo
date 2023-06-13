@@ -73,4 +73,4 @@ pachctl create pipeline -f ./bbox.json
 
 ## High Level Architecture
 
-![High Level Architecture](./docs/images/pachyderm-high-level-arch.svg)
+![High Level Architecture](./images/pachyderm-high-level-arch.svg)
