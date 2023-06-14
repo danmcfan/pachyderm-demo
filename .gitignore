@@ -1,6 +1,6 @@
+.tmp/
 .venv/
 .vscode/
 
 charts/
 data/
-tmp/
