@@ -11,8 +11,8 @@ upload:
 	pachctl start commit images@master
 	pachctl start commit labels@master
 	pachctl finish transaction
-	pachctl put file images@master:/ -r -f data/nested/images/n02088364-beagle/
-	pachctl put file labels@master:/ -r -f data/nested/labels/n02088364-beagle/
+	pachctl put file images@master:/ -r -f data/nested/images/n02085620-Chihuahua/
+	pachctl put file labels@master:/ -r -f data/nested/labels/n02085620-Chihuahua/
 	pachctl finish commit images@master
 	pachctl finish commit labels@master
 
